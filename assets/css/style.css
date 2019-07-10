@@ -1,0 +1,16 @@
+#gifHolder {
+    width: 800px;
+    height: 1000px;
+    background-color: darkgreen;
+    float: left;
+
+}
+
+body {
+    background-color: violet;
+    
+}
+
+#addMovie {
+    float: right;
+}
