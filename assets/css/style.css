@@ -1,16 +1,18 @@
 #gifHolder {
-    width: 800px;
-    height: 1000px;
-    background-color: darkgreen;
+    width: auto;
+    height:auto;
     float: left;
 
 }
 
-body {
-    background-color: violet;
-    
+.movie {
+    margin: 5px;
 }
 
 #addMovie {
     float: right;
+}
+
+#buttonHolder {
+    min-height: 75px;
 }
