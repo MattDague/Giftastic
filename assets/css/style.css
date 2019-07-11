@@ -1,22 +1,73 @@
 #gifHolder {
     width: auto;
     height:auto;
-    float: left;
-
+    margin-left: 50px;
+   
 }
 
 .movie {
     margin: 5px;
+
 }
 
 #addMovie {
     float: right;
+    margin-right: 50px;
+    min-width: 300px;
 }
 
 #buttonHolder {
     min-height: 75px;
+    clear: both;
+    margin-bottom: 15px;
+    margin-top:20px;
+    margin-left: 50px;
 }
+    
 
 #disclaimer {
     font-size: 10px;
+}
+ 
+.gif { 
+   
+   float: left;
+   padding: 15px;
+ 
+}
+
+
+@media only screen and (min-width: 320px) {
+    
+#addMovie{
+    text-align:center;
+    width: 100%;
+    margin-right: 100px;
+
+}
+
+#buttonHolder {
+    text-align:center;
+    width: 100%;
+    margin: auto;
+
+    
+}
+
+.gif { 
+   text-align: center;
+   padding: 0px;
+ }
+
+ #gifHolder {
+    width: auto;
+    height:auto;
+    margin-left: 0px;
+    
+   
+}
+
+ 
+
+
 }

@@ -14,7 +14,7 @@ function generateButton() {
         //adds text to each button
         j.text(topics[i]);
         //adds movie button to the div
-        $("#gifHolder").append(j);
+        $("#buttonHolder").append(j);
 
         
     }
@@ -41,14 +41,13 @@ $(document).on("click", ".movie", function() {
                 for (var i = 0; i < results.length; i++) {
                   var gifDiv = $("<div>");
       
-                  var rating = results[i].rating;
-      
-                  var p = $("<p>").text("Rating: " + rating);
+                  var p = $("<p>").text("Rating: " + results[i].rating);
       
                   var movieGif = $("<img>");
                   movieGif.attr("src", results[i].images.fixed_height.url);
-      
-                  gifDiv.prepend(p);
+                  gifDiv.addClass("gif");
+                
+                  gifDiv.append(p);
                   gifDiv.prepend(movieGif);
                   console.log(queryURL)
       
