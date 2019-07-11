@@ -37,7 +37,7 @@ $(document).on("click", ".movie", function () {
     method: "GET"
   })
     .then(function (response) {
-      console.log(queryURL);
+      console.log(response);
       //variable for data from ajax
       var results = response.data;
 
@@ -51,7 +51,12 @@ $(document).on("click", ".movie", function () {
 
         //vaiable for gif itself
         var movieGif = $("<img>");
-        movieGif.attr("src", results[i].images.fixed_height.url);
+        movieGif.attr("src", results[i].images.fixed_height_still.url);
+        movieGif.attr("data-still", results[i].images.fixed_height_still.url);
+        movieGif.attr("data-active", results[i].images.fixed_height.url);
+        movieGif.attr("data-state", "still");
+
+
 
         //adds class to new div
         gifDiv.addClass("gif");
@@ -59,27 +64,41 @@ $(document).on("click", ".movie", function () {
         // attaches the text and gif to the new div
         gifDiv.append(p);
         gifDiv.prepend(movieGif);
-        
+
         //adds the new div to the premade gif holder div
         $("#gifHolder").prepend(gifDiv);
       }
     });
+});
 
+$(document).on("click", "img", function () {
 
+  var state = $(this).attr("data-state");
+
+  if (state == "still") {
+    $(this).attr("src", $(this).attr("data-active"));
+    $(this).attr("data-state", "active");
+  } else {
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state", "still");
+  }
 
 });
+
+
+
 //adding movie functionality
 //on click event for submit buttion
 $("#movieSubmit").on("click", function (event) {
   //if statement to prevent blank text boxes from being added
-  if ($("#movieInput").val().trim() !== ""){
-  event.preventDefault();
-// create variable for the movie entered
-  var movie = $("#movieInput").val().trim();
-//add it to the array
-  topics.push(movie)
-//re-run generate button function to display buttons
-  generateButton()
+  if ($("#movieInput").val().trim() !== "") {
+    event.preventDefault();
+    // create variable for the movie entered
+    var movie = $("#movieInput").val().trim();
+    //add it to the array
+    topics.push(movie)
+    //re-run generate button function to display buttons
+    generateButton()
   }
 });
 //first call of generate button function
