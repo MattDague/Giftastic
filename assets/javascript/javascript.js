@@ -24,13 +24,13 @@ function generateButton() {
 //button on click functionality
 $(document).on("click", ".movie", function () {
 
-  console.log("howdy");
+
   // variable for each movies, gets its value from the data-movie value assigned in the original function
   var movie = $(this).attr("data-movie");
 
   // url for giphy api, adds movie name and my api key with a limit of
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-    movie + "&api_key=pNGgdso4Q7BzzXy7pvceA2r8mmbi4gLO&limit=10";
+    movie + "&api_key=pNGgdso4Q7BzzXy7pvceA2r8mmbi4gLO&limit=10&rating=g";
   //ajax call to GET information from giphy api
   $.ajax({
     url: queryURL,
@@ -51,6 +51,7 @@ $(document).on("click", ".movie", function () {
 
         //vaiable for gif itself
         var movieGif = $("<img>");
+        // assigns attributes and source, attributes allow for pause functionality later
         movieGif.attr("src", results[i].images.fixed_height_still.url);
         movieGif.attr("data-still", results[i].images.fixed_height_still.url);
         movieGif.attr("data-active", results[i].images.fixed_height.url);
@@ -70,14 +71,15 @@ $(document).on("click", ".movie", function () {
       }
     });
 });
-
+//on click functionality for all images that are displayed
 $(document).on("click", "img", function () {
-
+  // creates a variable for the "state" of the gif from the data-state attr it has
   var state = $(this).attr("data-state");
-
+  // if its still, it changes the src to the active image and sets the state to active
   if (state == "still") {
     $(this).attr("src", $(this).attr("data-active"));
     $(this).attr("data-state", "active");
+    //if its not still it changes the src to the still image and sets the state to still
   } else {
     $(this).attr("src", $(this).attr("data-still"));
     $(this).attr("data-state", "still");
